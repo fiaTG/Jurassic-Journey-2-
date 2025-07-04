@@ -1,0 +1,32 @@
+  .cursor-dot, .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+    will-change: transform;
+    z-index: 9999;
+  }
+  .cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: white;
+  }
+  .cursor-dot.hovered {
+    background: rgba(255, 255, 255, 0.8);
+  }
+  .cursor-ring {
+    width: 28px;
+    height: 28px;
+    border: 2px solid white;
+  }
+  .cursor-ring.hovered {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  a{
+      cursor: none;
+  }

@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+
+.parallax-section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/image.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  will-change: transform;
+  transform: translateZ(0);
+  z-index: 1;
+}
+
+.parallax-text {
+  font-family: 'Play', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  max-width: 800px;
+  background: rgba(108, 107, 107, 0.534);
+  color: #cead74;
+  border-radius: 50px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 768px) {
+  .parallax-bg {
+    background-attachment: scroll;
+  }
+}
