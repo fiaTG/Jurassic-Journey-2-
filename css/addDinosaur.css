@@ -36,9 +36,10 @@
       color: white;
       border: none;
       border-radius: 8px;
-      cursor: pointer;
+      cursor: none;
+   
       position: relative;
-      top: 2rem;
+      top: 0.1rem;
       left: 2rem;
     }
 
@@ -48,6 +49,7 @@
       width: 100vw; height: 100vh;
       background: rgba(0, 0, 0, 0.7);
       display: flex;
+       overflow-y: hidden;
       align-items: center;
       justify-content: center;
       z-index: 1000;
@@ -138,4 +140,78 @@
 
 .dino-row {
   transition: background 0.3s, color 0.3s;
+}
+
+
+.overview table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+}
+
+.overview th,
+.overview td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.overview th {
+  background-color: #1f1f1f;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.overview tr:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+}
+
+.overview td {
+  vertical-align: top;
+  color: #eaeaea;
+}
+
+@media (max-width: 768px) {
+  .overview {
+    padding: 2rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .overview table,
+  .overview thead,
+  .overview tbody,
+  .overview th,
+  .overview td,
+  .overview tr {
+    display: block;
+  }
+
+  .overview thead {
+    display: none;
+  }
+
+  .overview tr {
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+  }
+
+  .overview td {
+    padding: 0.5rem 0;
+    text-align: right;
+    position: relative;
+  }
+
+  .overview td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #aaa;
+  }
 }

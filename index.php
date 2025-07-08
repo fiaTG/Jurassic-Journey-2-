@@ -94,17 +94,29 @@ $kontinente = $pdo->query("SELECT KontinentId, Kontinentbezeichnung FROM Kontine
   
   <!-- Dino-Modell links -->
   <div style="flex: 0 0 50%; padding: 0 16px;">
-    <model-viewer 
+<!--     <model-viewer 
       src="DinoModel/randaling-t-rex-animated/source/Trex1.glb"
       animation-name="Walk"
       autoplay
       auto-rotate
       camera-controls
       style="width: 100%; height: 400px; background: transparent; border: none;">
-    </model-viewer>
+    </model-viewer> -->
+
+<model-viewer 
+  id="dinoModelViewer"
+  src=""
+  animation-name="Walk"
+  autoplay
+  auto-rotate
+  camera-controls
+  style="width: 100%; height: 400px; background: transparent; border: none;">
+</model-viewer>
+
   </div>
 
   <!-- Dino-Details rechts -->
+<div id="details">
   <div class="details" style="flex: 0 0 50%; padding: 0 16px;">
     <h2>Dino Details</h2>
     <p><strong>Name:</strong> <span id="detail-name">-</span></p>
@@ -113,7 +125,7 @@ $kontinente = $pdo->query("SELECT KontinentId, Kontinentbezeichnung FROM Kontine
     <p><strong>Ernährung:</strong> <span id="detail-diet">-</span></p>
     <p><strong>Beschreibung:</strong> <span id="detail-description">-</span></p>
   </div>
-
+</div>
 </div>
 
 <!-- Divider: Top -->
@@ -133,12 +145,14 @@ $kontinente = $pdo->query("SELECT KontinentId, Kontinentbezeichnung FROM Kontine
 
 <div id="modalOverlay" class="modal-overlay" style="display: none;">
   <div class="modal">
+    <button class="close-modal" style="position: absolute; top: 1rem; right: 1rem; background: transparent; border: none; font-size: 1.5rem; color: white; cursor: pointer;">&times;</button>
+
     <div class="tab-buttons">
       <button class="tab-btn active" data-tab="tab1">Allgemein</button>
       <button class="tab-btn" data-tab="tab2">Geografie</button>
       <button class="tab-btn" data-tab="tab3">Medien</button>
     </div>
-    <form method="post" action="insert.php">
+    <form method="post" action="insert.php" enctype="multipart/form-data">
       <div class="tab active" id="tab1">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
@@ -186,8 +200,9 @@ $kontinente = $pdo->query("SELECT KontinentId, Kontinentbezeichnung FROM Kontine
         <label for="bild">Bild-URL:</label>
         <input type="url" id="bild" name="BildURL">
 
-        <label for="modell">3D Modell-URL:</label>
-        <input type="url" id="modell" name="ModellPfad">
+<label for="modell">3D Modell hochladen (.glb):</label>
+<input type="file" id="modell" name="modellDatei" accept=".glb">
+
       </div>
 
       <button type="submit">Dinosaurier hinzufügen</button>
@@ -199,7 +214,7 @@ $kontinente = $pdo->query("SELECT KontinentId, Kontinentbezeichnung FROM Kontine
 
 
 
-<div id="dinosaur-overview" class="section">
+<div id="dinosaur-overview" class="overview">
     <h2>Dinosaur Overview</h2>
     <table>
         <thead>
@@ -219,11 +234,13 @@ $sql = "
         d.Körpergröße AS Koerpergroesse,
         GROUP_CONCAT(p.Periodenname SEPARATOR ', ') AS Zeitalter,
         e.Ernährungsbezeichnung AS Ernährung,
-        d.Beschreibung
+        d.Beschreibung,
+        m.ModellPfad
     FROM Dinosaurier d
     LEFT JOIN DinoPeriode dp ON d.DinoId = dp.DinoId
     LEFT JOIN Periode p ON dp.PeriodenId = p.PeriodenId
     LEFT JOIN Ernährung e ON d.ErnährungsId = e.ErnährungsId
+    LEFT JOIN DreiDModell m ON d.DinoId = m.DinoId
     GROUP BY d.DinoId
     ORDER BY d.Name
 ";
@@ -233,7 +250,7 @@ $sql = "
             $dinos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($dinos as $dino) {
-    echo "<tr class='dino-row' data-name='" . htmlspecialchars($dino['Name'], ENT_QUOTES) . "' data-groesse='" . htmlspecialchars($dino['Koerpergroesse']) . "' data-zeit='" . htmlspecialchars($dino['Zeitalter'], ENT_QUOTES) . "' data-ernaehrung='" . htmlspecialchars($dino['Ernährung'], ENT_QUOTES) . "' data-beschreibung='" . htmlspecialchars($dino['Beschreibung'], ENT_QUOTES) . "'>";
+echo "<tr class='dino-row' data-name='" . htmlspecialchars($dino['Name'], ENT_QUOTES) . "' data-groesse='" . htmlspecialchars($dino['Koerpergroesse']) . "' data-zeit='" . htmlspecialchars($dino['Zeitalter'], ENT_QUOTES) . "' data-ernaehrung='" . htmlspecialchars($dino['Ernährung'], ENT_QUOTES) . "' data-beschreibung='" . htmlspecialchars($dino['Beschreibung'], ENT_QUOTES) . "' data-modellpfad='" . htmlspecialchars($dino['ModellPfad'], ENT_QUOTES) . "'>";
     echo "<td>" . htmlspecialchars($dino['Name']) . "</td>";
     echo "<td>" . htmlspecialchars($dino['Zeitalter']) . "</td>";  // Hier richtig anzeigen
     echo "<td>" . htmlspecialchars($dino['Ernährung']) . "</td>";
@@ -268,12 +285,33 @@ foreach ($dinos as $dino) {
   const overlay = document.getElementById('modalOverlay');
   const tabButtons = document.querySelectorAll('.tab-btn');
   const tabs = document.querySelectorAll('.tab');
+  const closeBtn = document.querySelector('.close-modal'); // Optional, aber empfohlen
 
-  openBtn.onclick = () => overlay.style.display = 'flex';
-  overlay.onclick = e => {
-    if (e.target === overlay) overlay.style.display = 'none';
-  };
+  // Öffnen
+  openBtn.addEventListener('click', () => {
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+  });
 
+  // Schließen durch Klick auf Overlay
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) {
+      overlay.style.display = 'none';
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }
+  });
+
+  // Schließen durch "X"-Button
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      overlay.style.display = 'none';
+      document.body.style.overflow = '';
+    });
+  }
+
+  // Tab-Umschaltung
   tabButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       tabButtons.forEach(b => b.classList.remove('active'));
@@ -283,5 +321,6 @@ foreach ($dinos as $dino) {
     });
   });
 </script>
+
 </body>
 </html>

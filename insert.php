@@ -16,7 +16,28 @@ if (empty($name) || $gattungId === 0 || $ernährungsId === 0) {
     die("Fehlende Pflichtfelder.");
 }
 
-// Dinosaurier einfügen
+// Datei-Upload vorbereiten
+$modellPfad = null;
+$uploadVerzeichnis = __DIR__ . '/uploads/';
+
+if (!empty($_FILES['modellDatei']['name'])) {
+    $dateiname = basename($_FILES['modellDatei']['name']);
+    $zielpfad = $uploadVerzeichnis . $dateiname;
+
+    // Ordner erstellen falls nicht vorhanden
+    if (!is_dir($uploadVerzeichnis)) {
+        mkdir($uploadVerzeichnis, 0755, true);
+    }
+
+    // Datei verschieben
+    if (move_uploaded_file($_FILES['modellDatei']['tmp_name'], $zielpfad)) {
+        $modellPfad = 'uploads/' . $dateiname;
+    } else {
+        die("Fehler beim Hochladen der Modell-Datei.");
+    }
+}
+
+// Dinosaurier in Haupttabelle einfügen
 $stmt = $pdo->prepare("
     INSERT INTO Dinosaurier (Name, Beschreibung, Körpergröße, GattungsId, ErnährungsId)
     VALUES (?, ?, ?, ?, ?)
@@ -28,7 +49,7 @@ if (!$stmt->execute([$name, $beschreibung, $körpergröße, $gattungId, $ernähr
 
 $dinoId = $pdo->lastInsertId();
 
-// Perioden verknüpfen
+// Perioden-Zuordnung
 $stmtPeriode = $pdo->prepare("INSERT INTO DinoPeriode (DinoId, PeriodenId) VALUES (?, ?)");
 foreach ($perioden as $periodeId) {
     $periodeId = intval($periodeId);
@@ -37,7 +58,7 @@ foreach ($perioden as $periodeId) {
     }
 }
 
-// Kontinente verknüpfen
+// Kontinent-Zuordnung
 $stmtKontinent = $pdo->prepare("INSERT INTO DinoKontinent (DinoId, KontinentId) VALUES (?, ?)");
 foreach ($kontinente as $kontinentId) {
     $kontinentId = intval($kontinentId);
@@ -46,7 +67,17 @@ foreach ($kontinente as $kontinentId) {
     }
 }
 
-echo "<p style='color: green; font-size: 20px; font-weight: bold; text-align: center;'>Dinosaurier erfolgreich hinzugefügt!</p>";
+// 3D-Modell speichern, falls vorhanden
+if ($modellPfad !== null) {
+    $stmtModell = $pdo->prepare("
+        INSERT INTO DreiDModell (DinoId, ModellPfad, Erstellungsdatum)
+        VALUES (?, ?, CURDATE())
+    ");
+    if (!$stmtModell->execute([$dinoId, $modellPfad])) {
+        echo "Fehler beim Einfügen des 3D-Modells.<br>";
+    }
+}
 
+// Erfolgsmeldung & Weiterleitung
 header("Location: index.php");
 exit;
