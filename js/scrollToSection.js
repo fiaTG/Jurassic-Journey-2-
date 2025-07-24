@@ -3,7 +3,8 @@
     event.preventDefault();
     const target = document.getElementById(targetId);
     if (!target) return;
-    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+    const offset = 250; // Abstand nach oben in Pixeln
+    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
     const startPosition = window.pageYOffset;
     const distance = targetPosition - startPosition;
     const duration = 1200;
@@ -12,7 +13,7 @@
     function step(timestamp) {
       if (!start) start = timestamp;
       const progress = timestamp - start;
-      const ease = easeInOutQuad(progress / duration);
+      const ease = easeInOutQuad(Math.min(progress / duration, 1));
       window.scrollTo(0, startPosition + distance * ease);
       if (progress < duration) requestAnimationFrame(step);
     }

@@ -13,6 +13,7 @@
   left: 0;
   height: 100px;
   width: 100%;
+   filter: brightness(1.2) contrast(1.05);
   background-image: url("https://blz-contentstack-images.akamaized.net/v3/assets/blt3452e3b114fab0cd/blt661008ac61a51d63/653018bbaf5c2fb7aca0cb0e/Border_1.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -33,10 +34,10 @@
   position: absolute;
   bottom: 0;
   left: 0;
+   filter: brightness(1.2) contrast(1.05);
   height: 100px;
   width: 100%;
   background-image: url("https://blz-contentstack-images.akamaized.net/v3/assets/blt3452e3b114fab0cd/bltf52d4b60a1a29098/border_bottom.png");
   background-repeat: no-repeat;
   background-position: center;
-  
 }

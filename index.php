@@ -57,16 +57,13 @@ $kontinente = $pdo->query("SELECT KontinentId, Kontinentbezeichnung FROM Kontine
 <div class="divider-container-top">
   <div class="divider-top"></div>
 </div>
+    <h2 style=" font-size: 5rem; font-family: fantasy; text-align: center;">About Jurassic Journey</h2>
 
-<!-- Divider: Bottom -->
-<div class="divider-container-bottom">
-  <div class="divider-bottom"></div>
-</div>
+
 
 <section class="parallax-section">
   <div class="parallax-bg"></div>
   <div class="parallax-text">
-    <h2>About Jurassic Journey</h2>
     <p>Jurassic Journey is an immersive experience that takes you back to the time of the dinosaurs. Explore the prehistoric world and discover the fascinating creatures that once roamed the Earth.</p>
     <p>Our mission is to educate and entertain, providing a unique platform for dinosaur enthusiasts of all ages. Whether you're a paleontology student or just curious about these magnificent creatures, Jurassic Journey has something for everyone.</p>
     <h3>Key Features:</h3>
@@ -79,73 +76,83 @@ $kontinente = $pdo->query("SELECT KontinentId, Kontinentbezeichnung FROM Kontine
   </div>
 </section>
 
-<!-- Divider: Top -->
-<div class="divider-container-top">
-  <div class="divider-top"></div>
-</div>
 
-<!-- Divider: Bottom -->
-<div class="divider-container-bottom">
-  <div class="divider-bottom"></div>
-</div>
-
-
-<div style="display: flex; flex-wrap: nowrap; justify-content: space-between; align-items: flex-start; width: 100%; max-width: 1100px; margin: 0 auto;">
-  
-  <!-- Dino-Modell links -->
-  <div style="flex: 0 0 50%; padding: 0 16px;">
-<!--     <model-viewer 
-      src="DinoModel/randaling-t-rex-animated/source/Trex1.glb"
-      animation-name="Walk"
-      autoplay
-      auto-rotate
-      camera-controls
-      style="width: 100%; height: 400px; background: transparent; border: none;">
-    </model-viewer> -->
-
-<model-viewer 
-  id="dinoModelViewer"
-  src=""
-  animation-name="Walk"
-  autoplay
-  auto-rotate
-  camera-controls
-  style="width: 100%; height: 400px; background: transparent; border: none;">
-</model-viewer>
-
-  </div>
-
-  <!-- Dino-Details rechts -->
-<div id="details">
-  <div class="details" style="flex: 0 0 50%; padding: 0 16px;">
-    <h2>Dino Details</h2>
-    <p><strong>Name:</strong> <span id="detail-name">-</span></p>
-    <p><strong>Zeitalter:</strong> <span id="detail-era">-</span></p>
-    <p><strong>Körpergröße:</strong> <span id="detail-groesse">-</span></p>
-    <p><strong>Ernährung:</strong> <span id="detail-diet">-</span></p>
-    <p><strong>Beschreibung:</strong> <span id="detail-description">-</span></p>
-  </div>
-</div>
-</div>
 
 <!-- Divider: Top -->
 <div class="divider-container-top">
   <div class="divider-top"></div>
 </div>
 
-<!-- Divider: Bottom -->
-<div class="divider-container-bottom">
-  <div class="divider-bottom"></div>
-</div>
+<h2 style=" font-size: 5rem; font-family: fantasy; text-align: center;">Add Dinosaur</h2>
 
 
-<div id="add-dinosaur">
-<button id="openModalBtn">Dino hinzufügen</button>
+
+
+<div id="add-dinosaur" style="display: flex; justify-content: center; margin: 32px 0;">
+
+  <button id="openModalBtn" title="Dinosaurier hinzufügen" style="
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: none;
+    outline: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 50%;
+box-shadow: 0 2px 8px rgba(0,0,0,0.01);
+
+    /* Animation wird per Klasse hinzugefügt */
+  ">
+    <img id="dinoEggImg" src="img/dinoegg.png" alt="" style="
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      display: block;
+      border-radius: 50%;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.01);
+      transition: filter 0.2s;
+    ">
+  </button>
 </div>
+</div>
+<style>
+#openModalBtn:hover img#dinoEggImg {
+  box-shadow: 0 8px 32px rgba(236, 233, 233, 0.88);
+  filter: brightness(1.15) drop-shadow(0 0 12px #fff8);
+
+  transition: box-shadow 0.2s, filter 0.2s, outline 0.2s;
+}
+@keyframes egg-shake {
+  10% { transform: rotate(-8deg); }
+  20% { transform: rotate(8deg); }
+  30% { transform: rotate(-6deg); }
+  40% { transform: rotate(6deg); }
+  50% { transform: rotate(-4deg); }
+  60% { transform: rotate(4deg); }
+  70% { transform: rotate(-2deg); }
+  80% { transform: rotate(2deg); }
+  90% { transform: rotate(-1deg); }
+  100% { transform: rotate(0deg); }
+}
+.dino-egg-shake {
+  animation: egg-shake 0.7s cubic-bezier(.36,.07,.19,.97) both;
+}
+</style>
+<script>
+const dinoEggImg = document.getElementById('dinoEggImg');
+function shakeEgg() {
+  dinoEggImg.classList.remove('dino-egg-shake');
+  // Force reflow to restart animation
+  void dinoEggImg.offsetWidth;
+  dinoEggImg.classList.add('dino-egg-shake');
+}
+// Alle 2.5 Sekunden vibrieren lassen
+setInterval(shakeEgg, 2500);
+// Auch beim Hover vibrieren lassen
+dinoEggImg.addEventListener('mouseenter', shakeEgg);
+</script>
 
 <div id="modalOverlay" class="modal-overlay" style="display: none;">
   <div class="modal">
-    <button class="close-modal" style="position: absolute; top: 1rem; right: 1rem; background: transparent; border: none; font-size: 1.5rem; color: white; cursor: pointer;">&times;</button>
 
     <div class="tab-buttons">
       <button class="tab-btn active" data-tab="tab1">Allgemein</button>
@@ -197,11 +204,8 @@ $kontinente = $pdo->query("SELECT KontinentId, Kontinentbezeichnung FROM Kontine
         <label for="beschreibung">Beschreibung:</label>
         <textarea id="beschreibung" name="beschreibung" rows="4" required></textarea>
 
-        <label for="bild">Bild-URL:</label>
-        <input type="url" id="bild" name="BildURL">
-
 <label for="modell">3D Modell hochladen (.glb):</label>
-<input type="file" id="modell" name="modellDatei" accept=".glb">
+<input  type="file" id="modell" name="modellDatei" accept=".glb">
 
       </div>
 
@@ -211,11 +215,58 @@ $kontinente = $pdo->query("SELECT KontinentId, Kontinentbezeichnung FROM Kontine
 </div>
 
 
+<!-- Divider: Top -->
+<div class="divider-container-top">
+  <div class="divider-top"></div>
+</div>
 
+   <h2 style=" font-size: 5rem; font-family: fantasy; text-align: center;">Dino Details</h2>
+
+
+
+  <div style="display: flex; flex-wrap: nowrap; justify-content: space-between; align-items: flex-start; width: 100%; margin: 0 auto;">
+
+    <!-- Hinweis-Text links -->
+    <div style="flex: 0 0 10%; padding: 0 16px;">
+      <p style="font-size: 1.1rem; color: #777;  border-radius: 8px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); text-align: center; margin-bottom: 24px;">
+        <i class="fa fa-hand-pointer-o" aria-hidden="true" style="margin-right: 8px; color: #bfc5bcff;"></i>
+        Interaktives 3D-Modell: <span style="font-weight: bold;">Klicke und drehe den Dinosaurier.</span>
+      </p>
+    </div>
+
+    <!-- Dino-Modell in der Mitte -->
+    <div style="flex: 0 0 75%; display: flex; justify-content: center; align-items: center; padding: 0 16px;">
+      <model-viewer 
+        id="dinoModelViewer"
+        src=""
+        animation-name="Walk"
+        autoplay
+        auto-rotate
+        camera-controls
+        style="width:100%; height: 600px; background: transparent; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+      </model-viewer>
+    </div>
+
+    <!-- Dino-Details rechts -->
+    <div class="details" id="details" style="flex: 0 0 15%; padding: 0 16px; position: relative; right:160px;">
+  
+        <p><strong>Name:</strong> <span id="detail-name">-</span></p>
+        <p><strong>Zeitalter:</strong> <span id="detail-era">-</span></p>
+        <p><strong>Körpergröße:</strong> <span id="detail-groesse">-</span></p>
+        <p><strong>Ernährung:</strong> <span id="detail-diet">-</span></p>
+        <p><strong>Beschreibung:</strong> <span id="detail-description">-</span></p>
+      </div>
+    </div>
+
+  </div>
+
+<div class="divider-container-top">
+  <div class="divider-top"></div>
+</div>
 
 
 <div id="dinosaur-overview" class="overview">
-    <h2>Dinosaur Overview</h2>
+    <h2 style=" margin-top: 20px; font-size: 5rem; font-family: fantasy; text-align: center;">Dinosaur Overview</h2>
     <table>
         <thead>
             <tr>
@@ -223,6 +274,7 @@ $kontinente = $pdo->query("SELECT KontinentId, Kontinentbezeichnung FROM Kontine
                 <th>Zeitalter</th>
                 <th>Ernährung</th>
                 <th>Beschreibung</th>
+                    <th>Aktion</th>
             </tr>
         </thead>
         <tbody id="dinoTableBody">
@@ -230,6 +282,7 @@ $kontinente = $pdo->query("SELECT KontinentId, Kontinentbezeichnung FROM Kontine
             // Beispielabfrage: Daten aus Dinosaurier + Perioden + Ernährung holen
 $sql = "
     SELECT 
+        d.DinoId,
         d.Name, 
         d.Körpergröße AS Koerpergroesse,
         GROUP_CONCAT(p.Periodenname SEPARATOR ', ') AS Zeitalter,
@@ -251,15 +304,31 @@ $sql = "
 
 foreach ($dinos as $dino) {
 echo "<tr class='dino-row' data-name='" . htmlspecialchars($dino['Name'], ENT_QUOTES) . "' data-groesse='" . htmlspecialchars($dino['Koerpergroesse']) . "' data-zeit='" . htmlspecialchars($dino['Zeitalter'], ENT_QUOTES) . "' data-ernaehrung='" . htmlspecialchars($dino['Ernährung'], ENT_QUOTES) . "' data-beschreibung='" . htmlspecialchars($dino['Beschreibung'], ENT_QUOTES) . "' data-modellpfad='" . htmlspecialchars($dino['ModellPfad'], ENT_QUOTES) . "'>";
-    echo "<td>" . htmlspecialchars($dino['Name']) . "</td>";
-    echo "<td>" . htmlspecialchars($dino['Zeitalter']) . "</td>";  // Hier richtig anzeigen
-    echo "<td>" . htmlspecialchars($dino['Ernährung']) . "</td>";
-    echo "<td>" . htmlspecialchars($dino['Beschreibung']) . "</td>";
+echo "<td data-label='Name'>" . htmlspecialchars($dino['Name']) . "</td>";
+echo "<td data-label='Zeitalter'>" . htmlspecialchars($dino['Zeitalter']) . "</td>";
+echo "<td data-label='Ernährung'>" . htmlspecialchars($dino['Ernährung']) . "</td>";
+echo "<td data-label='Beschreibung'>" . htmlspecialchars($dino['Beschreibung']) . "</td>";
+
+echo "<td>
+  <button class='delete-dino-btn' data-id='" . htmlspecialchars($dino['DinoId']) . "'>🗑️</button>
+</td>";
+
     echo "</tr>";
 }
             ?>
         </tbody>
     </table>
+</div>
+
+
+<div id="deleteModal" class="modal-overlay" style="display: none;">
+  <div class="modal" style="max-width: 400px; text-align: center;">
+    <p style="margin-bottom: 1rem;">Möchtest du diesen Dinosaurier wirklich löschen?</p>
+    <div style="display: flex; justify-content: space-between;">
+      <button id="cancelDelete" style="flex: 1; margin-right: 5px; background: #ccc; border: none; padding: 10px; cursor: pointer;">Abbrechen</button>
+      <button id="confirmDelete" style="flex: 1; background: #c62828; color: white; border: none; padding: 10px; cursor: pointer;">🗑️ Löschen</button>
+    </div>
+  </div>
 </div>
 
 
@@ -279,6 +348,7 @@ echo "<tr class='dino-row' data-name='" . htmlspecialchars($dino['Name'], ENT_QU
     <script src="js/addDinosaur.js"></script>
     <script src="js/toTheTop.js"></script>
     <script src="js/scrollToSection.js"></script>
+    <script src="js/deleteDinosaur.js"></script>
 
 <script>
   const openBtn = document.getElementById('openModalBtn');

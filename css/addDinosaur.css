@@ -29,19 +29,7 @@
                 text-shadow: 2px 2px 6px black;
                 font-size: 0.8rem;
           }
-        #openModalBtn {
-      padding: 1rem 2rem;
-      font-size: 1rem;
-      background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(192,192,192,0.25));
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: none;
-   
-      position: relative;
-      top: 0.1rem;
-      left: 2rem;
-    }
+
 
     .modal-overlay {
       position: fixed;
@@ -53,34 +41,46 @@
       align-items: center;
       justify-content: center;
       z-index: 1000;
+      cursor: none;
     }
 
     .modal {
-      background: #222;
+      background: #2b2b2b;
+        color: #fffefc;
       padding: 2rem;
       border-radius: 12px;
       max-width: 600px;
       width: 90%;
       max-height: 90vh;
       overflow-y: auto;
+      cursor: none;
     }
 
     .tab-buttons {
       display: flex;
       margin-bottom: 1rem;
+       cursor: none;
     }
 
     .tab-buttons button {
       flex: 1;
-      background: #333;
-      color: white;
+      background: #444;
+      color: #fffefc;
       border: none;
       padding: 0.8rem;
-      cursor: pointer;
+       cursor: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .tab-buttons button:hover,
+    .tab-buttons button:focus {
+    background: #666;
+      color: #fff;
+      outline: none;
     }
 
     .tab-buttons button.active {
-      background: #4CAF50;
+      background: linear-gradient(to right, #67b26f, #4ca2cd);
+        color: #fffefc;
     }
 
     .tab {
@@ -103,115 +103,189 @@
       border: none;
       border-radius: 6px;
       box-sizing: border-box;
-      background: #444;
-      color: white;
+   background: #3a3f47;
+    cursor: none;
+       color: #ffffff;
+    }
+    option {
+      background: #3a3f47;
+      color: #ffffff;
+      cursor: none !important;
+    }
+    select:focus {
+      outline: none;
     }
 
     button[type="submit"] {
       margin-top: 1.5rem;
       width: 100%;
-      background: #4CAF50;
+      background: linear-gradient(to right, #67b26f, #4ca2cd);
+      color: #fff;
       padding: 0.8rem;
       font-size: 1rem;
       border: none;
       border-radius: 6px;
-      cursor: pointer;
+   cursor: none;
+      transition: background 0.2s;
     }
-               model-viewer {
-                width: 100%;
-                height: 500px;
+
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
+      background: linear-gradient(to right, #4ca2cd, #67b26f);
+      outline: none;
+    }      /* ------------------ Basics ------------------ */
+          .overview {
+            background: #1f1f28;
+            color: #fafafa;
+            padding: 2rem;
+            border-radius: 14px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+        
+          }
+          .overview table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 0.5rem;
+            margin-top: 2rem;
+            font-size: 1rem;
+            background: #2a2a38;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+            overflow: hidden;
+          }
+          .overview thead {
+           background: #33334d;
+          }
+          .overview tbody {
+            background: #2c2c3a;
+            color: #fff;
+          }
+          .overview th,
+          .overview td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
           }
 
+          .overview th {
+            background: #232323;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-weight: 600;
+            border-top: 1px solid #292929;
+          }
 
+          .overview td {
+              color: #f0eae2;
+            vertical-align: top;
+            font-size: 0.98rem;
+          }
 
+          /* ------------------ Hover & Selection ------------------ */
+          .dino-row {
+            transition: background 0.25s, color 0.25s;
+          }
+
+          .dino-row:hover {
+        background: rgba(90, 90, 120, 0.5);
+            color: #fff;
+            cursor: none;
+          }
 
           .dino-row.selected {
-  background-color: #cce5ff;
-  color: #222;
-  font-weight: bold;
-  transition: background 0.3s, color 0.3s;
-}
+        background: #c19a6b;
+            color: #fff;
+            font-weight: bold;
+          }
 
-.dino-row:hover {
-  background-color: #b3d7ff; 
-  color: #111;
-  transition: background 0.3s, color 0.3s;
-}
+          /* ------------------ Delete Button ------------------ */
+          .delete-dino-btn {
+         background: #a33f3f;
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 7px;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 0.95rem;
+            font-weight: 500;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+          }
 
-.dino-row {
-  transition: background 0.3s, color 0.3s;
-}
+          .delete-dino-btn:hover,
+          .delete-dino-btn:focus {
+             background: #ff5c5c;
+            outline: none;
+          }
 
+          /* ------------------ Mobile: Card Layout ------------------ */
+          @media (max-width: 768px) {
+            .overview {
+              padding: 1rem;
+            }
 
-.overview table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1.5rem;
+            .overview table,
+            .overview thead,
+            .overview tbody,
+            .overview th,
+            .overview td,
+            .overview tr {
+              display: block;
+            }
+
+            .overview thead {
+              display: none;
+            }
+
+            .overview tr {
+              margin-bottom: 1rem;
+              background: #232323;
+              border-radius: 10px;
+              padding: 1rem 0.7rem;
+              box-shadow: 0 1px 6px rgba(0,0,0,0.13);
+            }
+
+            .overview td {
+              padding: 0.5rem 0;
+              text-align: right;
+              position: relative;
+              border: none;
+              font-size: 0.97rem;
+            }
+
+            .overview td::before {
+              content: attr(data-label);
+              position: absolute;
+              left: 0;
+              font-weight: 600;
+              text-transform: uppercase;
+              color: #aaa;
+              font-size: 0.92rem;
+              letter-spacing: 0.03em;
+            }
+
+            .delete-dino-btn {
+              display: block;
+              width: 100%;
+              margin-top: 0.5rem;
+              font-size: 1rem;
+            }
+          }
+input[type="file"]::-webkit-file-upload-button {
+  background: linear-gradient(to right, #67b26f, #4ca2cd);
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 6px;
   font-size: 1rem;
-}
-
-.overview th,
-.overview td {
-  padding: 1rem;
-  text-align: left;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.overview th {
-  background-color: #1f1f1f;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.overview tr:hover {
-  background-color: rgba(255, 255, 255, 0.05);
   cursor: pointer;
+  transition: background 0.2s;
+  margin-right: 8px;
 }
 
-.overview td {
-  vertical-align: top;
-  color: #eaeaea;
-}
-
-@media (max-width: 768px) {
-  .overview {
-    padding: 2rem 1.5rem;
-    font-size: 1rem;
-  }
-
-  .overview table,
-  .overview thead,
-  .overview tbody,
-  .overview th,
-  .overview td,
-  .overview tr {
-    display: block;
-  }
-
-  .overview thead {
-    display: none;
-  }
-
-  .overview tr {
-    margin-bottom: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 1rem;
-  }
-
-  .overview td {
-    padding: 0.5rem 0;
-    text-align: right;
-    position: relative;
-  }
-
-  .overview td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 0;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #aaa;
-  }
+input[type="file"]:hover::-webkit-file-upload-button,
+input[type="file"]:focus::-webkit-file-upload-button {
+  background: linear-gradient(to right, #4ca2cd, #67b26f);
+  outline: none;
 }
