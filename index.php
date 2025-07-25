@@ -57,7 +57,7 @@ $kontinente = $pdo->query("SELECT KontinentId, Kontinentbezeichnung FROM Kontine
 <div class="divider-container-top">
   <div class="divider-top"></div>
 </div>
-    <h2 style=" font-size: 5rem; font-family: fantasy; text-align: center;">About Jurassic Journey</h2>
+    <h2 class="abouth2">About Jurassic Journey</h2>
 
 
 

@@ -11,3 +11,8 @@ body {
   font-family: 'Fantasy', sans-serif;
   line-height: 1.6;
 }
+.abouth2 {
+font-size: 4rem; font-family: fantasy; text-align: center;
+  color: #f9f6f1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
