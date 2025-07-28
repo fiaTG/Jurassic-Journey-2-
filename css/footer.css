@@ -1,54 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
-.footer{
-  background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(192,192,192,0.25));
-padding:30px 0px;
-font-family: 'Play', sans-serif;
-text-align:center;
-}
+     .footer {
+            background: linear-gradient(135deg, rgba(0,0,0,0.2), rgba(192,192,192,0.1));
+            padding: 3rem 0;
+            font-family: 'Play', sans-serif;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
 
-.footer .row{
-width:100%;
-margin:1% 0%;
-padding:0.6% 0%;
-color:gray;
-font-size:0.9em;
-}
+        .footer .row {
+            width: 100%;
+            margin: 1rem 0;
+            padding: 1rem 0;
+            color: #bbb;
+            font-size: 1rem;
+        }
 
-.footer .row a{
-text-decoration:none;
-color:gray;
-transition:0.5s;
-}
+        .footer .row a {
+            text-decoration: none;
+            color: #bbb;
+            transition: all 0.3s ease;
+            cursor: none;
+        }
 
-.footer .row a:hover{
-color:#8c754e;
-}
+        .footer .row a:hover {
+            color: #8c754e;
+            transform: translateY(-2px);
+        }
 
-.footer .row ul{
-width:100%;
-}
+        .footer .row ul {
+            width: 100%;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-.footer .row ul li{
-display:inline-block;
-margin:0px 30px;
-}
+        .footer .row ul li {
+            display: inline-block;
+            margin: 0 2rem;
+        }
 
-.footer .row a i{
-font-size:2em;
-margin:0% 1%;
-}
+        .footer .row a i {
+            font-size: 2rem;
+            margin: 0 1rem;
+            transition: transform 0.3s ease;
+        }
 
-@media (max-width:720px){
-.footer{
-text-align:left;
-padding:5%;
-}
-.footer .row ul li{
-display:block;
-margin:10px 0px;
-text-align:left;
-}
-.footer .row a i{
-margin:0% 3%;
-}
-}
+        .footer .row a i:hover {
+            transform: scale(1.2);
+        }

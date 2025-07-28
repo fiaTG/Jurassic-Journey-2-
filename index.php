@@ -57,21 +57,21 @@ $kontinente = $pdo->query("SELECT KontinentId, Kontinentbezeichnung FROM Kontine
 <div class="divider-container-top">
   <div class="divider-top"></div>
 </div>
-    <h2 class="abouth2">About Jurassic Journey</h2>
+    <h2 class="section-header">About Jurassic Journey</h2>
 
 
 
-<section class="parallax-section">
+<section class=" parallax-section">
   <div class="parallax-bg"></div>
   <div class="parallax-text">
     <p>Jurassic Journey is an immersive experience that takes you back to the time of the dinosaurs. Explore the prehistoric world and discover the fascinating creatures that once roamed the Earth.</p>
     <p>Our mission is to educate and entertain, providing a unique platform for dinosaur enthusiasts of all ages. Whether you're a paleontology student or just curious about these magnificent creatures, Jurassic Journey has something for everyone.</p>
     <h3>Key Features:</h3>
     <ul>
-      <li>Interactive dinosaur database</li>
-      <li>Educational resources and articles</li>
-      <li>Community forums for discussion</li>
-      <li>Regular updates with new content</li>
+      <li>&nbsp;&nbsp;&nbsp;&nbspInteractive dinosaur database</li>
+      <li>&nbsp;&nbsp;&nbsp;&nbspEducational resources and articles</li>
+      <li>&nbsp;&nbsp;&nbsp;&nbspCommunity forums for discussion</li>
+      <li>&nbsp;&nbsp;&nbsp;&nbspRegular updates with new content</li>
     </ul>
   </div>
 </section>
@@ -83,7 +83,7 @@ $kontinente = $pdo->query("SELECT KontinentId, Kontinentbezeichnung FROM Kontine
   <div class="divider-top"></div>
 </div>
 
-<h2 style=" font-size: 5rem; font-family: fantasy; text-align: center;">Add Dinosaur</h2>
+<h2 class="section-header">Add a Dinosaur</h2>
 
 
 
@@ -220,7 +220,7 @@ dinoEggImg.addEventListener('mouseenter', shakeEgg);
   <div class="divider-top"></div>
 </div>
 
-   <h2 style=" font-size: 5rem; font-family: fantasy; text-align: center;">Dino Details</h2>
+   <h2 class="section-header">Dino Details</h2>
 
 
 
