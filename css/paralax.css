@@ -37,7 +37,7 @@
 
         .parallax-text {
             font-family: 'Play', sans-serif;
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            font-size: clamp(0.5rem, 2.5vw, 1.3rem);
             opacity: 0;
             transform: translateY(50px);
             transition: opacity 1s ease, transform 1s ease;

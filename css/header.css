@@ -27,6 +27,7 @@ a.egOne:hover:before {
 
 a.egOne:hover {
   color:#8c754e;
+    filter: brightness(1.3);
 }
 
 
@@ -94,11 +95,12 @@ a.egOne:hover {
   height: 68px;
   cursor: pointer;
   display: block;
-  transition: transform 0.3s ease;
+  transition: transform;
 }
 
 .logoHeader:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
+  filter: brightness(1.3);
   cursor:none;
 }
 
@@ -155,6 +157,7 @@ a.egOne:hover {
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
+   filter: brightness(1.3);
 }
 
 .mobile-menu.active {

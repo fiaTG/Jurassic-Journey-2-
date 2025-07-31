@@ -79,7 +79,9 @@
     }
 
     .tab-buttons button.active {
-      background: linear-gradient(to right, #67b26f, #4ca2cd);
+
+      background: linear-gradient(to right, #c19a6b, #8c754e);
+
         color: #fffefc;
     }
 
@@ -97,6 +99,9 @@
     }
 
     input, select, textarea {
+        -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
       width: 100%;
       padding: 0.6rem;
       margin-top: 0.3rem;
@@ -112,14 +117,60 @@
       color: #ffffff;
       cursor: none !important;
     }
+option:hover {
+      background: #c19a6b;
+      color: #ffffff;
+     
+    }
+    select option:hover {
+      background: #c19a6b;
+      color: #ffffff;
+    }
+
+    select {
+  background: #3a3f47;
+  color: #ffffff;
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: none;
+  cursor: none;
+}
+
     select:focus {
-      outline: none;
+  outline-color: #c19a6b; /* ändert die Outline-Farbe bei Fokus */
+  border: 1px solid #c19a6b;
+}
+
+select[multiple] {
+  height: 150px;  /* oder z.B. 5 Zeilen */
+  width: 100%;
+  background-color: #3a3f47;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  padding: 0.6rem;
+  box-sizing: border-box;
+  cursor: none;
+}
+    input[type="file"] {
+      background: #c19a6b;
+      color: #ffffff;
+      padding: 0.6rem;
+      border-radius: 6px;
+      border: none;
+      cursor: none;
+      width: 100%;
+    }
+
+    textarea {
+      height: 150px;
+      resize: vertical;
     }
 
     button[type="submit"] {
       margin-top: 1.5rem;
       width: 100%;
-      background: linear-gradient(to right, #67b26f, #4ca2cd);
+       background: linear-gradient(to right, #c19a6b, #8c754e);
       color: #fff;
       padding: 0.8rem;
       font-size: 1rem;
@@ -131,7 +182,7 @@
 
     button[type="submit"]:hover,
     button[type="submit"]:focus {
-      background: linear-gradient(to right, #4ca2cd, #67b26f);
+      background: linear-gradient(to right, #c19a6b, #8c754e);
       outline: none;
     }      /* ------------------ Basics ------------------ */
           .overview {
@@ -273,7 +324,7 @@
             }
           }
 input[type="file"]::-webkit-file-upload-button {
-  background: linear-gradient(to right, #67b26f, #4ca2cd);
+      background: linear-gradient(to right, #c19a6b, #8c754e);
   color: #fff;
   padding: 0.7rem 1.2rem;
   border: none;
@@ -286,6 +337,6 @@ input[type="file"]::-webkit-file-upload-button {
 
 input[type="file"]:hover::-webkit-file-upload-button,
 input[type="file"]:focus::-webkit-file-upload-button {
-  background: linear-gradient(to right, #4ca2cd, #67b26f);
+       background: linear-gradient(to right, #c19a6b, #8c754e);
   outline: none;
 }

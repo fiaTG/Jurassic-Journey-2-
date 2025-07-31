@@ -8,6 +8,23 @@
             cursor: none;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #a08350 transparent;
+        }
+
+        html::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        html::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background-color: #a08350;
+            border-radius: 10px;
+            border: 3px solid transparent;
+            background-clip: content-box;   
         }
 
         body {
@@ -18,4 +35,7 @@
             font-family: 'Play', sans-serif;
             line-height: 1.6;
             min-height: 100vh;
+
         }
+
+        

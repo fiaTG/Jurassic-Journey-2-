@@ -3,11 +3,11 @@
     event.preventDefault();
     const target = document.getElementById(targetId);
     if (!target) return;
-    const offset = 250; // Abstand nach oben in Pixeln
+    const offset = 150; // Abstand nach oben in Pixeln
     const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
     const startPosition = window.pageYOffset;
     const distance = targetPosition - startPosition;
-    const duration = 1200;
+    const duration = 150;
     let start = null;
 
     function step(timestamp) {

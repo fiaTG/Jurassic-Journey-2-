@@ -1,6 +1,6 @@
         #scrollHint {
             position: absolute;
-            bottom: 2rem;
+            bottom: 0.5rem;
             left: 50%;
             transform: translateX(-50%);
             color: #fff;
@@ -13,8 +13,6 @@
             transition: opacity 0.8s ease;
             text-align: center;
             background: rgba(0,0,0,0.3);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
         }
 
         @keyframes pulse {

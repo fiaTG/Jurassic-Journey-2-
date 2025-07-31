@@ -45,8 +45,8 @@ $kontinente = $pdo->query("SELECT KontinentId, Kontinentbezeichnung FROM Kontine
     Dein Browser unterstützt das Video-Tag nicht.
   </video>
 
-  <img id="lifeImage" src="img/lifeFindsAWay.png" alt="Life Finds A Way">
-  <img id="jurassicText" src="img/Schrift.png" alt="Jurassic Journey">
+  <img id="lifeImage" src="img/LFAWnew.png" alt="Life Finds A Way">
+  <img id="jurassicText" src="img/JJnew.png" alt="Jurassic Journey">
 </div>
 
 <div id="scrollHint" style="display: none; opacity: 0;">
@@ -88,7 +88,7 @@ $kontinente = $pdo->query("SELECT KontinentId, Kontinentbezeichnung FROM Kontine
 
 
 
-<div id="add-dinosaur" style="display: flex; justify-content: center; margin: 32px 0;">
+<div id="add-dinosaur" style="height:35vh; display: flex; justify-content: center; margin: 32px 0;">
 
   <button id="openModalBtn" title="Dinosaurier hinzufügen" style="
     background: none;
@@ -220,22 +220,51 @@ dinoEggImg.addEventListener('mouseenter', shakeEgg);
   <div class="divider-top"></div>
 </div>
 
-   <h2 class="section-header">Dino Details</h2>
+   <h2 class="section-header">Dinosaur Details</h2>
 
 
 
   <div style="display: flex; flex-wrap: nowrap; justify-content: space-between; align-items: flex-start; width: 100%; margin: 0 auto;">
-
-    <!-- Hinweis-Text links -->
-    <div style="flex: 0 0 10%; padding: 0 16px;">
-      <p style="font-size: 1.1rem; color: #777;  border-radius: 8px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); text-align: center; margin-bottom: 24px;">
+    <!-- Linke Spalte: Dino-Details (40%) -->
+    <div style="flex: 0 0 40%; display: flex; flex-direction: column; align-items: flex-start; padding: 0 16px; min-width: 220px;">
+      <div class="details" id="details" style="
+        width: 100%;
+        background: linear-gradient(to right, #c19a6b8d, #8c754e81);
+        border-radius: 16px;
+        box-shadow: 0 4px 16px rgba(60,60,60,0.08);
+        font-size: 1.08rem;
+        color: #2d2d2d;
+        margin-top: 35%;
+        margin-bottom: 24px;
+        transition: box-shadow 0.2s;
+        padding: 24px 18px;
+      ">
+        <h3 style="margin-top:0; margin-bottom: 18px; font-size: 1.15rem; color: #c79360ff; background: linear-gradient(to right, #c19a6b, #8c754e); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 600; letter-spacing: 0.5px; text-align: center;">Dinosaur Details</h3>
+        <p style="margin: 10px 0;"><strong style="color:#6b4f2c;">Name:</strong> <span id="detail-name" style="color:#2d2d2d;">-</span></p>
+        <p style="margin: 10px 0;"><strong style="color:#6b4f2c;">Zeitalter:</strong> <span id="detail-era" style="color:#2d2d2d;">-</span></p>
+        <p style="margin: 10px 0;"><strong style="color:#6b4f2c;">Körpergröße:</strong> <span id="detail-groesse" style="color:#2d2d2d;">-</span></p>
+        <p style="margin: 10px 0;"><strong style="color:#6b4f2c;">Ernährung:</strong> <span id="detail-diet" style="color:#2d2d2d;">-</span></p>
+        <p style="margin: 10px 0;"><strong style="color:#6b4f2c;">Beschreibung:</strong> <span id="detail-description" style="color:#2d2d2d;">-</span></p>
+      </div>
+    </div>
+    <!-- Rechte Spalte: Hinweistext (oben, 60%) und Modell (unten) -->
+    <div style="flex: 0 0 60%; display: flex; flex-direction: column; align-items: center; padding: 0 16px; min-width: 320px;">
+      <!-- Hinweis-Text -->
+      <p class="hint-anim" style="font-size: 1.1rem; color: #777; border-radius: 8px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); text-align: center; margin-bottom: 24px; width: 100%;">
         <i class="fa fa-hand-pointer-o" aria-hidden="true" style="margin-right: 8px; color: #bfc5bcff;"></i>
         Interaktives 3D-Modell: <span style="font-weight: bold;">Klicke und drehe den Dinosaurier.</span>
       </p>
-    </div>
-
-    <!-- Dino-Modell in der Mitte -->
-    <div style="flex: 0 0 75%; display: flex; justify-content: center; align-items: center; padding: 0 16px;">
+      <style>
+        .hint-anim {
+          animation: hintFade 4s infinite;
+        }
+        @keyframes hintFade {
+          0% { opacity: 1; }
+          50% { opacity: 0; }
+          100% { opacity: 1; }
+        }
+      </style>
+      <!-- Modell -->
       <model-viewer 
         id="dinoModelViewer"
         src=""
@@ -243,21 +272,9 @@ dinoEggImg.addEventListener('mouseenter', shakeEgg);
         autoplay
         auto-rotate
         camera-controls
-        style="width:100%; height: 600px; background: transparent; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        style="width:100%; max-width: 600px; height: 600px; background: transparent; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
       </model-viewer>
     </div>
-
-    <!-- Dino-Details rechts -->
-    <div class="details" id="details" style="flex: 0 0 15%; padding: 0 16px; position: relative; right:160px;">
-  
-        <p><strong>Name:</strong> <span id="detail-name">-</span></p>
-        <p><strong>Zeitalter:</strong> <span id="detail-era">-</span></p>
-        <p><strong>Körpergröße:</strong> <span id="detail-groesse">-</span></p>
-        <p><strong>Ernährung:</strong> <span id="detail-diet">-</span></p>
-        <p><strong>Beschreibung:</strong> <span id="detail-description">-</span></p>
-      </div>
-    </div>
-
   </div>
 
 <div class="divider-container-top">
@@ -266,7 +283,7 @@ dinoEggImg.addEventListener('mouseenter', shakeEgg);
 
 
 <div id="dinosaur-overview" class="overview">
-    <h2 style=" margin-top: 20px; font-size: 5rem; font-family: fantasy; text-align: center;">Dinosaur Overview</h2>
+       <h2 class="section-header">Dinosaur Overview</h2>
     <table>
         <thead>
             <tr>
