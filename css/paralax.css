@@ -78,3 +78,68 @@
             left: 0;
             top: 0;
         }
+
+        @media (max-width: 768px) {
+    .section-header {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+        margin: 2rem 0 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .parallax-section {
+        min-height: 70vh;
+        padding: 2rem 0;
+    }
+
+    .parallax-text {
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+        padding: 2rem;
+        margin: 1rem;
+        max-width: 95vw;
+    }
+
+    .parallax-text h3 {
+        font-size: 1.3rem;
+        margin-top: 1.5rem;
+    }
+
+    .parallax-text ul {
+        padding-left: 1rem;
+    }
+
+    .parallax-text li {
+        margin: 0.6rem 0;
+        padding-left: 1.2rem;
+        font-size: 0.95rem;
+    }
+
+    .parallax-bg {
+        background-attachment: scroll; /* Fixes iOS parallax issues */
+        height: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-header {
+        font-size: clamp(1.8rem, 10vw, 2.5rem);
+        margin: 1.5rem 0 1rem;
+    }
+
+    .parallax-section {
+        min-height: 60vh;
+    }
+
+    .parallax-text {
+        padding: 1.5rem;
+        margin: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .parallax-text h3 {
+        font-size: 1.2rem;
+    }
+
+    .parallax-text li {
+        font-size: 0.85rem;
+    }
+}

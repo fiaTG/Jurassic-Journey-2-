@@ -48,3 +48,39 @@
         .footer .row a i:hover {
             transform: scale(1.2);
         }
+
+        @media (max-width: 768px) {
+    .footer {
+        padding: 2rem 0;
+    }
+
+    .footer .row {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .footer .row ul li {
+        display: block;
+        margin: 0.5rem 0;
+    }
+
+    .footer .row a i {
+        font-size: 1.5rem;
+        margin: 0 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 1.5rem 0;
+    }
+
+    .footer .row {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .footer .row a i {
+        font-size: 1.3rem;
+    }
+}

@@ -1,0 +1,117 @@
+@media (max-width: 768px) {
+    /* Container für Details und Modell */
+    div[style*="display: flex; flex-wrap: nowrap; justify-content: space-between"] {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    /* Details Panel */
+    div[style*="flex: 0 0 40%"] {
+        flex: 1 1 auto !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin-top: 0 !important;
+        order: 2;
+    }
+
+    /* Modell Container */
+    div[style*="flex: 0 0 60%"] {
+        flex: 1 1 auto !important;
+        width: 100% !important;
+        max-width: none !important;
+        order: 1;
+    }
+
+    /* Hint Text */
+    .hint-anim {
+        font-size: 1rem !important;
+        padding: 1rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    /* Model Viewer */
+    model-viewer {
+        width: 100% !important;
+        max-width: none !important;
+        height: 400px !important;
+    }
+
+    /* Details Box */
+    .details {
+        margin-top: 2rem !important;
+        padding: 1.5rem !important;
+        font-size: 1rem !important;
+    }
+
+    .details h3 {
+        font-size: 1.2rem !important;
+    }
+
+    .details p {
+        margin: 8px 0 !important;
+        font-size: 0.95rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Add Dinosaur Button */
+    #add-dinosaur {
+        height: auto !important;
+        padding: 2rem 0 !important;
+    }
+
+    #openModalBtn img {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    /* Model Viewer */
+    model-viewer {
+        height: 350px !important;
+    }
+
+    /* Hint Text */
+    .hint-anim {
+        font-size: 0.9rem !important;
+        padding: 0.8rem !important;
+    }
+
+    /* Details */
+    .details {
+        padding: 1.2rem !important;
+        font-size: 0.9rem !important;
+    }
+
+    .details h3 {
+        font-size: 1.1rem !important;
+    }
+
+    .details p {
+        font-size: 0.85rem !important;
+    }
+}
+
+/* Divider Fixes für Mobile */
+@media (max-width: 768px) {
+    .divider-container-top,
+    .divider-container-bottom {
+        height: 60px;
+    }
+
+    .divider-top::before,
+    .divider-bottom::before {
+        height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .divider-container-top,
+    .divider-container-bottom {
+        height: 40px;
+    }
+
+    .divider-top::before,
+    .divider-bottom::before {
+        height: 40px;
+    }
+}

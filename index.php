@@ -27,6 +27,8 @@ $kontinente = $pdo->query("SELECT KontinentId, Kontinentbezeichnung FROM Kontine
         <link rel="stylesheet" href="css/paralax.css">
         <link rel="stylesheet" href="css/divider.css">
         <link rel="stylesheet" href="css/addDinosaur.css">
+        <link rel="stylesheet" href="css/mobile.css">
+
 </head>
 <body>
 
@@ -112,7 +114,6 @@ box-shadow: 0 2px 8px rgba(0,0,0,0.01);
       transition: filter 0.2s;
     ">
   </button>
-</div>
 </div>
 <style>
 #openModalBtn:hover img#dinoEggImg {
@@ -212,6 +213,7 @@ dinoEggImg.addEventListener('mouseenter', shakeEgg);
       <button type="submit">Dinosaurier hinzufügen</button>
     </form>
   </div>
+  <button class="close-modal" title="Schließen">&times;</button>
 </div>
 
 
@@ -372,8 +374,6 @@ echo "<td>
   const overlay = document.getElementById('modalOverlay');
   const tabButtons = document.querySelectorAll('.tab-btn');
   const tabs = document.querySelectorAll('.tab');
-  const closeBtn = document.querySelector('.close-modal'); // Optional, aber empfohlen
-
   // Öffnen
   openBtn.addEventListener('click', () => {
     overlay.style.display = 'flex';
@@ -390,13 +390,8 @@ echo "<td>
     }
   });
 
-  // Schließen durch "X"-Button
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      overlay.style.display = 'none';
-      document.body.style.overflow = '';
-    });
-  }
+  // Hinweis: Es gibt keinen "close-modal"-Button im Modal. 
+  // Falls ein Schließen-Button benötigt wird, bitte im Modal HTML ergänzen.
 
   // Tab-Umschaltung
   tabButtons.forEach(btn => {
@@ -407,6 +402,13 @@ echo "<td>
       document.getElementById(btn.dataset.tab).classList.add('active');
     });
   });
+
+closeBtn = document.querySelector('.close-modal');
+closeBtn.addEventListener('click', () => {
+  overlay.style.display = 'none';
+  document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
+});
 </script>
 
 </body>

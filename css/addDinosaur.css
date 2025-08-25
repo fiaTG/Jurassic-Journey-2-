@@ -127,6 +127,16 @@ option:hover {
       color: #ffffff;
     }
 
+    option::selection {
+      background: #c19a6b;
+      color: #ffffff;
+    }
+
+    option:checked {
+      background: #c19a6b;
+      color: #ffffff;
+    }
+
     select {
   background: #3a3f47;
   color: #ffffff;
@@ -182,7 +192,7 @@ select[multiple] {
 
     button[type="submit"]:hover,
     button[type="submit"]:focus {
-      background: linear-gradient(to right, #c19a6b, #8c754e);
+background: linear-gradient(to right, #ac7530, #774f1e, #533416);
       outline: none;
     }      /* ------------------ Basics ------------------ */
           .overview {
@@ -324,7 +334,7 @@ select[multiple] {
             }
           }
 input[type="file"]::-webkit-file-upload-button {
-      background: linear-gradient(to right, #c19a6b, #8c754e);
+  background: linear-gradient(to right, #c19a6b, #8c754e, #6e6252);
   color: #fff;
   padding: 0.7rem 1.2rem;
   border: none;
@@ -337,6 +347,105 @@ input[type="file"]::-webkit-file-upload-button {
 
 input[type="file"]:hover::-webkit-file-upload-button,
 input[type="file"]:focus::-webkit-file-upload-button {
-       background: linear-gradient(to right, #c19a6b, #8c754e);
+  background: linear-gradient(to right, #ac7530, #774f1e, #533416);
   outline: none;
 }
+ 
+
+@media (max-width: 768px) {
+    .modal {
+        margin: 0;
+        width: 100%;
+        max-width: none;
+        height: 100vh;
+        max-height: none;
+        border-radius: 0;
+        padding: 1.5rem;
+    }
+
+    .modal-overlay {
+        padding: 0;
+        align-items: stretch;
+    }
+
+    .tab-buttons button {
+        font-size: 0.9rem;
+        padding: 0.6rem 0.4rem;
+        margin-top:36px;
+    }
+
+    input, select, textarea {
+        padding: 0.8rem;
+        font-size: 1rem;
+        -webkit-appearance: none;
+        border-radius: 8px;
+    }
+
+    select[multiple] {
+        height: 120px;
+    }
+
+    textarea {
+        height: 120px;
+    }
+
+    button[type="submit"] {
+        padding: 1rem;
+        font-size: 1.1rem;
+        margin-top: 2rem;
+    }
+
+    .overview {
+        padding: 1rem;
+    }
+
+    .overview table {
+        font-size: 0.85rem;
+    }
+
+    .delete-dino-btn {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal {
+        padding: 1rem;
+    }
+
+    .tab-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .tab-buttons button {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 1rem;
+        margin-top:36px;
+    }
+
+    input, select, textarea {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}
+.close-modal {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: transparent;
+      border: none;
+      color: #fffefc;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+    }
+
+    .close-modal:hover,
+    .close-modal:focus {
+      color: #c19a6b;
+      outline: none;
+    }

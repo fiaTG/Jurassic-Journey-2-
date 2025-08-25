@@ -24,20 +24,26 @@
       pointer-events: none;
     }
 
-        #lifeImage, #jurassicText {
-            position: absolute;
-            width: min(400px, 80vw);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            z-index: 2;
-        }
+          #lifeImage, #jurassicText {
+                position: absolute;
+                width: min(400px, 80vw);
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+                transition: opacity 1s ease-in-out;
+                z-index: 2;
+          }
 
-    #lifeImage.fade-in {
-      opacity: 1;
-    }
+     #lifeImage.fade-in {
+        opacity: 1;
+     }
+
+     @media (max-width: 700px) {
+          #lifeImage, #jurassicText {
+                width: min(200px, 60vw);
+          }
+     }
 
     @media (max-width: 700px) {
  #video-section {
@@ -47,3 +53,25 @@
     height: 30vh;
 }
     }
+
+    @media (max-width: 768px) {
+    #video-section {
+        height: 60vh;
+        min-height: 400px;
+    }
+
+    #lifeImage, #jurassicText {
+        width: min(300px, 75vw);
+    }
+}
+
+@media (max-width: 480px) {
+    #video-section {
+        height: 50vh;
+        min-height: 350px;
+    }
+
+    #lifeImage, #jurassicText {
+        width: min(250px, 80vw);
+    }
+}

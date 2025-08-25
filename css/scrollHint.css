@@ -4,7 +4,7 @@
             left: 50%;
             transform: translateX(-50%);
             color: #fff;
-            padding: 1rem 2rem;
+            padding: 0.5rem 0.5rem;
             border-radius: 30px;
             font-size: 1rem;
             font-family: 'Play', sans-serif;
@@ -20,3 +20,23 @@
             50% { transform: translateX(-50%) translateY(-10px); opacity: 0.7; }
             100% { transform: translateX(-50%) translateY(0); opacity: 1; }
         }
+
+        @media (max-width: 768px) {
+    #scrollHint {
+        bottom: 1rem;
+        padding: 0.7rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    #scrollHint p {
+        margin: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    #scrollHint {
+        bottom: 0.5rem;
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}
